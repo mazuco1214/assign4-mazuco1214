@@ -5,6 +5,15 @@ PImage soldier;
 PImage soil0, soil1, soil2, soil3, soil4, soil5;
 PImage[][] soils, stones;
 
+
+float soldierWalk_X = 0;
+float soldierWalk_Y ;
+float soldier1Place=int(random(4));
+float soldier2Place=int(random(4,8));
+float soldier3Place=int(random(8,12));
+float soldier4Place=int(random(12,16));
+float soldier5Place=int(random(16,20));
+float soldier6Place=int(random(20,24));
 final int GAME_START = 0, GAME_RUN = 1, GAME_OVER = 2;
 int gameState = 0;
 
@@ -22,6 +31,21 @@ final int START_BUTTON_Y = 360;
 
 float[] cabbageX, cabbageY, soldierX, soldierY;
 float soldierSpeed = 2f;
+
+int cabbageY1 = int(random(4));
+int cabbageY2 = int(random(4,8));
+int cabbageY3 = int(random(8,12));
+int cabbageY4 = int(random(12,16));
+int cabbageY5 = int(random(16,20));
+int cabbageY6 = int(random(20,24));
+
+int cabbageX1 = int(random(8));
+int cabbageX2 = int(random(8));
+int cabbageX3 = int(random(8));
+int cabbageX4 = int(random(8));
+int cabbageX5 = int(random(8));
+int cabbageX6 = int(random(8));
+
 
 float playerX, playerY;
 int playerCol, playerRow;
@@ -100,6 +124,9 @@ void setup() {
 
 	// Initialize soidiers and their position
 
+
+
+
 	// Initialize cabbages and their position
 
 }
@@ -159,11 +186,101 @@ void draw() {
 				// NOTE: To avoid errors on webpage, you can either use floor(j / 4) or (int)(j / 4) to make sure it's an integer.
 				int areaIndex = floor(j / 4);
 				image(soils[areaIndex][4], i * SOIL_SIZE, j * SOIL_SIZE);
-				
+
+
+
 			}
 		}
+    for(int i = 0; i < soilHealth.length; i++){
+       soilHealth[i][i] = 30;
+      image(stones[0][4], i * SOIL_SIZE, i* SOIL_SIZE);
+    }
 
-		// Cabbages
+for(int i = 0 ; i<24 ;i++){ 
+  for(int j = 0 ; j<8 ; j++){
+  
+  if(i==8 || i==11 || i==12 || i==15 ){
+   if( j==1 || j==2 || j==5 || j==6){
+    image(stones[0][4],j * SOIL_SIZE, i* SOIL_SIZE);
+    }
+   }
+   
+  if(i==9 || i==10 || i==13 || i==14 ){
+   if( j==0 || j==3 || j==4 || j==7){
+    image(stones[0][4],j * SOIL_SIZE, i* SOIL_SIZE);
+    }
+   }
+   
+  if(16<=i && i<24){
+
+  image(stones[0][4],width-(i-9)* SOIL_SIZE,i* SOIL_SIZE);
+  image(stones[0][4],width-(i-10)* SOIL_SIZE,i* SOIL_SIZE);
+  image(stones[1][4],width-(i-10)* SOIL_SIZE,i* SOIL_SIZE);
+  
+  image(stones[0][4],width-(i-12)* SOIL_SIZE,i* SOIL_SIZE);
+  image(stones[0][4],width-(i-13)* SOIL_SIZE,i* SOIL_SIZE);
+  image(stones[1][4],width-(i-13)* SOIL_SIZE,i* SOIL_SIZE); 
+  
+  image(stones[0][4],width-(i-15)* SOIL_SIZE,i* SOIL_SIZE);
+  image(stones[0][4],width-(i-16)* SOIL_SIZE,i* SOIL_SIZE);
+  image(stones[1][4],width-(i-16)* SOIL_SIZE,i* SOIL_SIZE);
+  
+  image(stones[0][4],width-(i-18)* SOIL_SIZE,i* SOIL_SIZE);
+  image(stones[0][4],width-(i-19)* SOIL_SIZE,i* SOIL_SIZE);
+  image(stones[1][4],width-(i-19)* SOIL_SIZE,i* SOIL_SIZE);
+  
+  image(stones[0][4],width-(i-21)* SOIL_SIZE,i* SOIL_SIZE);
+  image(stones[0][4],width-(i-22)* SOIL_SIZE,i* SOIL_SIZE);
+  image(stones[1][4],width-(i-22)* SOIL_SIZE,i* SOIL_SIZE);
+   
+ }
+
+ }
+
+}
+       image(cabbage,cabbageX1*80,cabbageY1*80);
+       image(cabbage,cabbageX2*80,cabbageY2*80);
+       image(cabbage,cabbageX3*80,cabbageY3*80);
+       image(cabbage,cabbageX4*80,cabbageY4*80);
+       image(cabbage,cabbageX5*80,cabbageY5*80);
+       image(cabbage,cabbageX6*80,cabbageY6*80);
+       
+
+     image(soldier,soldierWalk_X-80,soldierWalk_Y);
+     soldierWalk_Y=soldier1Place*80;
+     soldierWalk_X +=5;
+     soldierWalk_X %=720;
+
+     image(soldier,soldierWalk_X-80,soldierWalk_Y);
+     soldierWalk_Y=soldier2Place*80;
+
+     
+     image(soldier,soldierWalk_X-80,soldierWalk_Y);
+     soldierWalk_Y=soldier3Place*80;
+
+     image(soldier,soldierWalk_X-80,soldierWalk_Y);
+     soldierWalk_Y=soldier4Place*80;
+
+     image(soldier,soldierWalk_X-80,soldierWalk_Y);
+     soldierWalk_Y=soldier5Place*80;
+
+     image(soldier,soldierWalk_X-80,soldierWalk_Y);
+     soldierWalk_Y=soldier6Place*80;
+
+    
+ ;
+       
+       
+
+     
+     
+
+    
+    
+    
+   
+
+
 		// > Remember to check if playerHealth is smaller than PLAYER_MAX_HEALTH!
 
 		// Groundhog
